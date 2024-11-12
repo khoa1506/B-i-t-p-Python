@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Sửa Thông Tin Sinh Viên</title>
+</head>
+<body>
+    <h1>Sửa Thông Tin Sinh Viên</h1>
+    <form action="{{ url_for('edit_student', student_id=student.id) }}" method="post">
+        <label for="mssv">MSSV:</label>
+        <input type="text" id="mssv" name="mssv" value="{{ student.MSSV }}" required><br>
+        
+        <label for="hoten">Họ Tên:</label>
+        <input type="text" id="hoten" name="hoten" value="{{ student.Hoten }}" required><br>
+        
+        <label for="nganhhoc">Ngành Học:</label>
+        <input type="text" id="nganhhoc" name="nganhhoc" value="{{ student.Nganhhoc }}" required><br>
+        
+        <button type="submit">Lưu Thay Đổi</button>
+    </form>
+    <a href="{{ url_for('index') }}">Quay lại danh sách</a>
+</body>
+</html>
