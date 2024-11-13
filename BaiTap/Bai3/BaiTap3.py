@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = '123456'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:khoa1598753@localhost/sinhvien'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
