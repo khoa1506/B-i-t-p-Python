@@ -7,6 +7,18 @@
     <title>Danh Sách Sinh Viên</title>
 </head>
 <body>
+    <!-- Thanh Bar Tài Khoản -->
+    <div class="top-bar">
+        <div class="account-info">
+            {% if current_user.is_authenticated %}
+                <span>Chào, {{ current_user.username }}</span> |
+                <a href="{{ url_for('logout') }}">Đăng xuất</a>
+            {% else %}
+                <span>Chưa đăng nhập</span>
+            {% endif %}
+        </div>
+    </div>
+
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         <div id="flash-messages">
@@ -16,6 +28,7 @@
         </div>
         {% endif %}
     {% endwith %}
+
     <h1>Danh Sách Sinh Viên</h1>
     <table border="1">
         <tr>
@@ -23,7 +36,7 @@
             <th>MSSV</th>
             <th>Họ Tên</th>
             <th>Ngành Học</th>
-            <th>Hành Động</th>
+            <th>Tùy Chọn</th>
         </tr>
         {% for student in students %}
         <tr>
@@ -38,6 +51,13 @@
         </tr>
         {% endfor %}
     </table>
+
     <a href="{{ url_for('add_student') }}">Thêm Sinh Viên Mới</a>
+
+    <div class="export-info">
+        <h2>Xuất Thông Tin</h2>
+        <a href="{{ url_for('export_pdf') }}" class="export-a">Xuất PDF</a> |
+        <a href="{{ url_for('export_excel') }}" class="export-a">Xuất Excel</a>
+    </div>
 </body>
 </html>
